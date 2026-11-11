@@ -1,41 +1,44 @@
 # Cosa facciamo stasera?
 
-App per trovare idee da fare in due a Varese e dintorni.
+App statica per due a Varese e dintorni, pubblicata con GitHub Pages.
 
 ## Funzioni
 
-- Nove proposte con piano, budget indicativo e collegamenti alle mappe.
-- Filtri per atmosfera, budget per due, tempo disponibile e meteo scelto manualmente.
-- Selezione casuale con «Sorprendici».
-- Preferiti salvati nel localStorage del browser, senza sincronizzazione tra dispositivi.
-- Layout responsive, in italiano.
+- 19 idee con piano, mappa, budget stimato e distanza indicativa dal centro di Varese.
+- Filtri per atmosfera, budget per due, durata e meteo selezionato manualmente.
+- Preferiti e viste Tutte, Da provare, Già fatto e Le vostre proposte.
+- Creazione, modifica ed eliminazione delle proposte personali.
+- Diario per ciascuna proposta con data, voto da 1 a 5 e ricordo scritto.
+- Sorprendici sceglie tra le proposte filtrate, dando precedenza a quelle nuove.
+- Esportazione JSON dei dati personali come copia di sicurezza (ripristino automatico non incluso).
 
 ## Avvio locale
 
-Non servono dipendenze né compilazione. Con Python 3:
+Non servono installazione o compilazione. Dalla cartella del progetto:
 
 ```sh
-python3 -m http.server 8000 --directory dist
+python3 -m http.server 8000
 ```
 
 Aprire http://localhost:8000.
 
-## Struttura
+## File
 
-- `dist/index.html`: pagina e struttura dell’app.
-- `dist/style.css`: grafica e layout responsive.
-- `dist/app.js`: idee, filtri, preferiti e finestre di dettaglio.
-- `.openai/hosting.json`: configurazione dell’hosting Sites esistente.
+- `index.html`: struttura dell’app.
+- `style.css`: grafica responsive.
+- `app.js`: contenuti, filtri, salvataggi e interazioni.
 
-Per aggiungere proposte, modificare l’array `ideas` in `dist/app.js`.
+GitHub Pages pubblica il branch `main`, cartella `/ (root)`.
+Il file `hosting.json` è la configurazione storica di Sites, non usata da GitHub Pages.
 
-## Verifica
+## Dati personali
+
+Preferiti, proposte e ricordi sono salvati nel localStorage di questo browser e di questo dominio. Non si sincronizzano tra telefoni e non vengono inviati a un server. Cancellare i dati del browser li elimina. Il pulsante di esportazione scarica una copia JSON da conservare. Nessuna migrazione automatica dal precedente dominio Sites.
+
+## Verifiche
 
 ```sh
-node --check dist/app.js
+node --check app.js
 ```
 
-## Note
-
-Budget stimati per due, trasporti esclusi. Aperture, disponibilità e meteo vanno verificati. Il meteo non è collegato a un servizio in tempo reale. I font sono caricati da Google Fonts; in assenza di rete si usano i font di sistema.
-
+I prezzi sono stime per due, trasporti esclusi; le distanze sono approssimative, solo andata dal centro di Varese. Verificare aperture, biglietti, accessibilità e meteo prima delle uscite. Non vengono interrogati servizi meteo o eventi in tempo reale. Google Fonts e le mappe richiedono una connessione.
