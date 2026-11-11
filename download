@@ -1,0 +1,9 @@
+# File locali e pacchetti temporanei
+.DS_Store
+node_modules/
+.env
+.env.*
+*.tar.gz
+__pycache__/
+publish-source.py
+
